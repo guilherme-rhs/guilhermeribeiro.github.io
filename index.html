@@ -7,7 +7,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet" />
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
-    html, body { height: 100%; background-color: #f0f4f8; color: #111; font-family: 'Inter', sans-serif; overflow-x: hidden; }
+    html, body { height: 100%; background-color: #f0f4f8; font-family: 'Inter', sans-serif; overflow-x: hidden; }
     canvas { position: absolute; top: 0; left: 0; z-index: 0; }
 
     .language-switch {
@@ -36,9 +36,12 @@
     .content {
       position: relative;
       z-index: 1;
+      background: #ffffff;
+      border-radius: 12px;
       padding: 3rem;
       max-width: 1000px;
-      margin: auto;
+      margin: 3rem auto;
+      box-shadow: 0 0 20px rgba(0,0,0,0.05);
     }
 
     .header {
@@ -77,6 +80,14 @@
       display: flex;
       flex-direction: column;
       justify-content: space-between;
+    }
+
+    .project-card img.card-img {
+      width: 100%;
+      border-radius: 8px;
+      height: 160px;
+      object-fit: cover;
+      margin-bottom: 1rem;
     }
 
     .project-card h3 {
@@ -128,7 +139,7 @@
 
   <div class="content">
     <div class="header">
-      <img src="https://github.com/guilherme-rhs/portifolio/blob/main/foto_gui.jpeg" alt="Foto de Guilherme Ribeiro" />
+      <img src="https://raw.githubusercontent.com/guilherme-rhs/portifolio/main/foto_gui.jpeg" alt="Foto de Guilherme Ribeiro" />
       <div>
         <h1>Guilherme Ribeiro</h1>
         <p>Data Scientist especializado em IA, risco de crédito, saúde e prevenção à fraude.</p>
@@ -142,40 +153,43 @@
 
     <div class="projects">
       <div class="project-card">
+        <img src="img/saude.jpg" alt="Risco na Saúde" class="card-img" />
         <h3>Risco na Saúde</h3>
         <p>Modelagem preditiva aplicada à área da saúde para antecipar riscos e prevenir eventos críticos.</p>
         <ul>
           <li>Python, Pandas, Scikit-learn</li>
-          <li>Modelos supervisionados (XGBoost, Random Forest)</li>
-          <li>Limpeza e enriquecimento de dados clínicos</li>
-          <li>Avaliação por AUC, Recall e Matriz de Confusão</li>
-          <li>Implantação via pipeline automatizado</li>
+          <li>XGBoost, Random Forest</li>
+          <li>Dados clínicos e enriquecimento</li>
+          <li>AUC, Recall, Confusão</li>
+          <li>Pipelines de produção</li>
         </ul>
         <div class="saiba-mais"><a href="#">Saiba mais →</a></div>
       </div>
 
       <div class="project-card">
+        <img src="img/credito.jpg" alt="Risco no Crédito" class="card-img" />
         <h3>Risco no Crédito</h3>
         <p>Soluções para análise de inadimplência e score, com governança e estabilidade de modelo.</p>
         <ul>
           <li>PySpark, SQL, Databricks</li>
-          <li>Modelos de classificação binária (Logística, Árvores)</li>
+          <li>Modelos binários: Logística, Árvores</li>
           <li>Métricas: PSI, KS, ROC</li>
-          <li>Governança com Unity Catalog e MLflow</li>
-          <li>Deploy e monitoramento automatizado</li>
+          <li>Unity Catalog e MLflow</li>
+          <li>Deploy e monitoramento</li>
         </ul>
         <div class="saiba-mais"><a href="#">Saiba mais →</a></div>
       </div>
 
       <div class="project-card">
+        <img src="img/fraude.jpg" alt="Fraude" class="card-img" />
         <h3>Fraude</h3>
-        <p>Algoritmos de detecção de comportamento anômalo para minimizar perdas e proteger o negócio.</p>
+        <p>Detecção de comportamento anômalo para minimizar perdas e proteger o negócio.</p>
         <ul>
           <li>Machine Learning não supervisionado</li>
-          <li>Algoritmos: Isolation Forest, DBSCAN</li>
-          <li>Extração de padrões por transações</li>
-          <li>Visualização com Power BI</li>
-          <li>Integração com alertas em tempo real</li>
+          <li>Isolation Forest, DBSCAN</li>
+          <li>Transações e perfis</li>
+          <li>Power BI + alertas</li>
+          <li>Integração em tempo real</li>
         </ul>
         <div class="saiba-mais"><a href="#">Saiba mais →</a></div>
       </div>
@@ -223,7 +237,7 @@
         if (n.y < 0 || n.y > canvas.height) n.vy *= -1;
 
         ctx.beginPath();
-        ctx.arc(n.x, n.y, 4, 0, Math.PI * 2); // bolinhas maiores
+        ctx.arc(n.x, n.y, 4, 0, Math.PI * 2);
         ctx.fillStyle = "#0a4cff";
         ctx.fill();
 
