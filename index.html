@@ -1,78 +1,262 @@
-<div class="header" style="display: flex; align-items: center; gap: 2rem; margin-bottom: 2rem;">
-  <img src="sua-foto.jpg" alt="Foto de Guilherme Ribeiro" style="width: 140px; height: 140px; border-radius: 50%; object-fit: cover; box-shadow: 0 4px 10px rgba(0,0,0,0.2);">
-  <div>
-    <h1>Guilherme Ribeiro</h1>
-    <p>Data Scientist especializado em IA, risco de crédito, saúde e prevenção à fraude.</p>
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Guilherme Ribeiro - Data Scientist</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet" />
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body { height: 100%; background-color: #f0f4f8; color: #111; font-family: 'Inter', sans-serif; overflow-x: hidden; }
+    canvas { position: absolute; top: 0; left: 0; z-index: 0; }
+
+    .language-switch {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      z-index: 2;
+    }
+    .language-switch button {
+      background: #fff;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      padding: 0.25rem 0.5rem;
+      margin-left: 0.5rem;
+      font-size: 0.9rem;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.25rem;
+    }
+    .language-switch img {
+      width: 16px;
+      height: 16px;
+    }
+
+    .content {
+      position: relative;
+      z-index: 1;
+      padding: 3rem;
+      max-width: 1000px;
+      margin: auto;
+    }
+
+    .header {
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+      margin-bottom: 2rem;
+    }
+
+    .header img {
+      width: 140px;
+      height: 140px;
+      border-radius: 50%;
+      object-fit: cover;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    }
+
+    h1 { font-size: 3rem; color: #0a4cff; }
+    p { font-size: 1.25rem; margin-bottom: 1rem; color: #333; }
+
+    .about {
+      margin-bottom: 2rem;
+    }
+
+    .projects {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .project-card {
+      background-color: #fff;
+      padding: 1.5rem;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .project-card h3 {
+      color: #0a4cff;
+      margin-bottom: 0.5rem;
+    }
+
+    .project-card ul {
+      margin: 0.5rem 0 1rem 1rem;
+      padding: 0;
+      list-style-type: disc;
+      color: #555;
+    }
+
+    .saiba-mais {
+      margin-top: auto;
+      text-align: right;
+    }
+
+    .saiba-mais a {
+      color: #0a4cff;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    .icons {
+      margin-top: 2rem;
+    }
+
+    .icons a {
+      margin-right: 1rem;
+      display: inline-block;
+      width: 32px;
+      height: 32px;
+    }
+
+    .icons img {
+      width: 100%;
+    }
+  </style>
+</head>
+<body>
+  <div class="language-switch">
+    <button><img src="https://flagcdn.com/w40/br.png" alt="Português"> PT-BR</button>
+    <button><img src="https://flagcdn.com/w40/us.png" alt="English"> EN</button>
   </div>
-</div>
 
-<script>
-  const canvas = document.getElementById('network');
-  const ctx = canvas.getContext('2d');
-  canvas.width = window.innerWidth;
-  canvas.height = window.innerHeight;
+  <canvas id="network"></canvas>
 
-  const neurons = [];
-  const total = 100;
+  <div class="content">
+    <div class="header">
+      <img src="sua-foto.jpg" alt="Foto de Guilherme Ribeiro" />
+      <div>
+        <h1>Guilherme Ribeiro</h1>
+        <p>Data Scientist especializado em IA, risco de crédito, saúde e prevenção à fraude.</p>
+      </div>
+    </div>
 
-  for (let i = 0; i < total; i++) {
-    neurons.push({
-      x: Math.random() * canvas.width,
-      y: Math.random() * canvas.height,
-      vx: (Math.random() - 0.5) * 0.5,
-      vy: (Math.random() - 0.5) * 0.5
+    <div class="about">
+      <h2>Sobre mim</h2>
+      <p>Sou Cientista de Dados com foco em Inteligência Artificial, especializado na aplicação de técnicas avançadas de machine learning para extrair insights complexos de grandes volumes de dados. Atuo com Python, PySpark e plataformas como Databricks e Azure, aplicando MLOps com MLflow e Unity Catalog para governança e automação. Tenho experiência consolidada em modelagem preditiva de risco de crédito, análise de inadimplência e performance de modelos com métricas como PSI, KS e ROC. Atualmente, trabalho na área de risco da Casas Bahia, combinando inovação com soluções escaláveis em nuvem para apoiar decisões estratégicas e melhorar a experiência dos clientes.</p>
+    </div>
+
+    <div class="projects">
+      <div class="project-card">
+        <h3>Risco na Saúde</h3>
+        <p>Modelagem preditiva aplicada à área da saúde para antecipar riscos e prevenir eventos críticos.</p>
+        <ul>
+          <li>Python, Pandas, Scikit-learn</li>
+          <li>Modelos supervisionados (XGBoost, Random Forest)</li>
+          <li>Limpeza e enriquecimento de dados clínicos</li>
+          <li>Avaliação por AUC, Recall e Matriz de Confusão</li>
+          <li>Implantação via pipeline automatizado</li>
+        </ul>
+        <div class="saiba-mais"><a href="#">Saiba mais →</a></div>
+      </div>
+
+      <div class="project-card">
+        <h3>Risco no Crédito</h3>
+        <p>Soluções para análise de inadimplência e score, com governança e estabilidade de modelo.</p>
+        <ul>
+          <li>PySpark, SQL, Databricks</li>
+          <li>Modelos de classificação binária (Logística, Árvores)</li>
+          <li>Métricas: PSI, KS, ROC</li>
+          <li>Governança com Unity Catalog e MLflow</li>
+          <li>Deploy e monitoramento automatizado</li>
+        </ul>
+        <div class="saiba-mais"><a href="#">Saiba mais →</a></div>
+      </div>
+
+      <div class="project-card">
+        <h3>Fraude</h3>
+        <p>Algoritmos de detecção de comportamento anômalo para minimizar perdas e proteger o negócio.</p>
+        <ul>
+          <li>Machine Learning não supervisionado</li>
+          <li>Algoritmos: Isolation Forest, DBSCAN</li>
+          <li>Extração de padrões por transações</li>
+          <li>Visualização com Power BI</li>
+          <li>Integração com alertas em tempo real</li>
+        </ul>
+        <div class="saiba-mais"><a href="#">Saiba mais →</a></div>
+      </div>
+    </div>
+
+    <div class="icons">
+      <a href="https://www.linkedin.com/in/guilherme-ribeiro" target="_blank"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linkedin/linkedin-original.svg" alt="LinkedIn"></a>
+      <a href="https://github.com/guilhermeribeiro" target="_blank"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" alt="GitHub"></a>
+      <a href="mailto:guilherme@email.com"><img src="https://cdn-icons-png.flaticon.com/512/732/732200.png" alt="Email"></a>
+    </div>
+  </div>
+
+  <script>
+    const canvas = document.getElementById('network');
+    const ctx = canvas.getContext('2d');
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+
+    const neurons = [];
+    const total = 100;
+
+    for (let i = 0; i < total; i++) {
+      neurons.push({
+        x: Math.random() * canvas.width,
+        y: Math.random() * canvas.height,
+        vx: (Math.random() - 0.5) * 0.5,
+        vy: (Math.random() - 0.5) * 0.5
+      });
+    }
+
+    const mouse = { x: 0, y: 0 };
+    window.addEventListener('mousemove', (e) => {
+      mouse.x = e.clientX;
+      mouse.y = e.clientY;
     });
-  }
 
-  const mouse = { x: 0, y: 0 };
-  window.addEventListener('mousemove', (e) => {
-    mouse.x = e.clientX;
-    mouse.y = e.clientY;
-  });
+    function draw() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-  function draw() {
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
+      neurons.forEach((n, i) => {
+        n.x += n.vx;
+        n.y += n.vy;
 
-    neurons.forEach((n, i) => {
-      n.x += n.vx;
-      n.y += n.vy;
+        if (n.x < 0 || n.x > canvas.width) n.vx *= -1;
+        if (n.y < 0 || n.y > canvas.height) n.vy *= -1;
 
-      if (n.x < 0 || n.x > canvas.width) n.vx *= -1;
-      if (n.y < 0 || n.y > canvas.height) n.vy *= -1;
+        ctx.beginPath();
+        ctx.arc(n.x, n.y, 4, 0, Math.PI * 2); // bolinhas maiores
+        ctx.fillStyle = "#0a4cff";
+        ctx.fill();
 
-      ctx.beginPath();
-      ctx.arc(n.x, n.y, 4, 0, Math.PI * 2);
-      ctx.fillStyle = "#0a4cff";
-      ctx.fill();
+        for (let j = i + 1; j < total; j++) {
+          const n2 = neurons[j];
+          const dx = n.x - n2.x;
+          const dy = n.y - n2.y;
+          const dist = Math.sqrt(dx * dx + dy * dy);
+          if (dist < 200) {
+            ctx.beginPath();
+            ctx.moveTo(n.x, n.y);
+            ctx.lineTo(n2.x, n2.y);
+            ctx.strokeStyle = `rgba(10, 76, 255, ${1 - dist / 200})`;
+            ctx.stroke();
+          }
+        }
 
-      for (let j = i + 1; j < total; j++) {
-        const n2 = neurons[j];
-        const dx = n.x - n2.x;
-        const dy = n.y - n2.y;
-        const dist = Math.sqrt(dx * dx + dy * dy);
-        if (dist < 200) {
+        const dx = n.x - mouse.x;
+        const dy = n.y - mouse.y;
+        const distMouse = Math.sqrt(dx * dx + dy * dy);
+        if (distMouse < 250) {
           ctx.beginPath();
           ctx.moveTo(n.x, n.y);
-          ctx.lineTo(n2.x, n2.y);
-          ctx.strokeStyle = `rgba(10, 76, 255, ${1 - dist / 200})`;
+          ctx.lineTo(mouse.x, mouse.y);
+          ctx.strokeStyle = `rgba(10, 76, 255, ${1 - distMouse / 250})`;
           ctx.stroke();
         }
-      }
+      });
 
-      const dx = n.x - mouse.x;
-      const dy = n.y - mouse.y;
-      const distMouse = Math.sqrt(dx * dx + dy * dy);
-      if (distMouse < 250) {
-        ctx.beginPath();
-        ctx.moveTo(n.x, n.y);
-        ctx.lineTo(mouse.x, mouse.y);
-        ctx.strokeStyle = `rgba(10, 76, 255, ${1 - distMouse / 250})`;
-        ctx.stroke();
-      }
-    });
+      requestAnimationFrame(draw);
+    }
 
-    requestAnimationFrame(draw);
-  }
-
-  draw();
-</script>
+    draw();
+  </script>
+</body>
+</html>
