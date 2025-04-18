@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Guilherme Ribeiro - Data Scientist</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body { height: 100%; background-color: #0e0e0e; color: white; font-family: 'Inter', sans-serif; overflow: hidden; }
+    canvas { position: absolute; top: 0; left: 0; z-index: 0; }
+    .content {
+      position: relative;
+      z-index: 1;
+      padding: 3rem;
+      max-width: 800px;
+    }
+    h1 { font-size: 3rem; margin-bottom: 0.5rem; color: #00ffc8; }
+    p { font-size: 1.25rem; margin-bottom: 2rem; color: #ccc; }
+    .projects {
+      margin-bottom: 2rem;
+    }
+    .project {
+      margin-bottom: 1rem;
+    }
+    .icons a {
+      margin-right: 1rem;
+      color: #00ffc8;
+      text-decoration: none;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+<canvas id="network"></canvas>
+<div class="content">
+  <h1>Guilherme Ribeiro</h1>
+  <p>Data Scientist especializado em IA, risco de crédito, saúde e prevenção à fraude.</p>
+  <div class="projects">
+    <h2>Projetos</h2>
+    <div class="project"><strong>Risco na Saúde:</strong> Modelagem preditiva aplicada à área da saúde para antecipar riscos e prevenir eventos críticos.</div>
+    <div class="project"><strong>Risco no Crédito:</strong> Soluções para análise de inadimplência e score, com governança e estabilidade de modelo.</div>
+    <div class="project"><strong>Fraude:</strong> Algoritmos de detecção de comportamento anômalo para minimizar perdas e proteger o negócio.</div>
+  </div>
+  <div class="icons">
+    <a href="#">LinkedIn</a>
+    <a href="#">GitHub</a>
+    <a href="mailto:email@exemplo.com">Email</a>
+  </div>
+</div>
+
+<script>
+  const canvas = document.getElementById('network');
+  const ctx = canvas.getContext('2d');
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+
+  const neurons = [];
+  const total = 100;
+
+  for (let i = 0; i < total; i++) {
+    neurons.push({
+      x: Math.random() * canvas.width,
+      y: Math.random() * canvas.height,
+      vx: (Math.random() - 0.5) * 0.5,
+      vy: (Math.random() - 0.5) * 0.5
+    });
+  }
+
+  const mouse = { x: 0, y: 0 };
+  window.addEventListener('mousemove', (e) => {
+    mouse.x = e.clientX;
+    mouse.y = e.clientY;
+  });
+
+  function draw() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+    neurons.forEach((n, i) => {
+      n.x += n.vx;
+      n.y += n.vy;
+
+      if (n.x < 0 || n.x > canvas.width) n.vx *= -1;
+      if (n.y < 0 || n.y > canvas.height) n.vy *= -1;
+
+      ctx.beginPath();
+      ctx.arc(n.x, n.y, 2, 0, Math.PI * 2);
+      ctx.fillStyle = "#00ffc8";
+      ctx.fill();
+
+      for (let j = i + 1; j < total; j++) {
+        const n2 = neurons[j];
+        const dx = n.x - n2.x;
+        const dy = n.y - n2.y;
+        const dist = Math.sqrt(dx * dx + dy * dy);
+        if (dist < 100) {
+          ctx.beginPath();
+          ctx.moveTo(n.x, n.y);
+          ctx.lineTo(n2.x, n2.y);
+          ctx.strokeStyle = `rgba(0,255,200,${1 - dist / 100})`;
+          ctx.stroke();
+        }
+      }
+
+      const dx = n.x - mouse.x;
+      const dy = n.y - mouse.y;
+      const distMouse = Math.sqrt(dx * dx + dy * dy);
+      if (distMouse < 150) {
+        ctx.beginPath();
+        ctx.moveTo(n.x, n.y);
+        ctx.lineTo(mouse.x, mouse.y);
+        ctx.strokeStyle = `rgba(0,255,200,${1 - distMouse / 150})`;
+        ctx.stroke();
+      }
+    });
+
+    requestAnimationFrame(draw);
+  }
+
+  draw();
+</script>
+</body>
+</html>
