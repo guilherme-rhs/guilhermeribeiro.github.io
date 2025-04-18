@@ -1,3 +1,11 @@
+<div class="header" style="display: flex; align-items: center; gap: 2rem; margin-bottom: 2rem;">
+  <img src="sua-foto.jpg" alt="Foto de Guilherme Ribeiro" style="width: 140px; height: 140px; border-radius: 50%; object-fit: cover; box-shadow: 0 4px 10px rgba(0,0,0,0.2);">
+  <div>
+    <h1>Guilherme Ribeiro</h1>
+    <p>Data Scientist especializado em IA, risco de crédito, saúde e prevenção à fraude.</p>
+  </div>
+</div>
+
 <script>
   const canvas = document.getElementById('network');
   const ctx = canvas.getContext('2d');
@@ -33,7 +41,7 @@
       if (n.y < 0 || n.y > canvas.height) n.vy *= -1;
 
       ctx.beginPath();
-      ctx.arc(n.x, n.y, 4, 0, Math.PI * 2); // Aumenta o tamanho das bolinhas
+      ctx.arc(n.x, n.y, 4, 0, Math.PI * 2);
       ctx.fillStyle = "#0a4cff";
       ctx.fill();
 
@@ -42,7 +50,7 @@
         const dx = n.x - n2.x;
         const dy = n.y - n2.y;
         const dist = Math.sqrt(dx * dx + dy * dy);
-        if (dist < 200) { // Aumenta a distância de conexão
+        if (dist < 200) {
           ctx.beginPath();
           ctx.moveTo(n.x, n.y);
           ctx.lineTo(n2.x, n2.y);
@@ -54,7 +62,7 @@
       const dx = n.x - mouse.x;
       const dy = n.y - mouse.y;
       const distMouse = Math.sqrt(dx * dx + dy * dy);
-      if (distMouse < 250) { // Aumenta a distância de conexão com o mouse
+      if (distMouse < 250) {
         ctx.beginPath();
         ctx.moveTo(n.x, n.y);
         ctx.lineTo(mouse.x, mouse.y);
