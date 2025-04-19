@@ -22,7 +22,7 @@
       border-radius: 6px;
       padding: 0.25rem 0.5rem;
       margin-left: 0.5rem;
-      font-size: 0.9rem;
+      font-size: 0.625rem;
       cursor: pointer;
       display: inline-flex;
       align-items: center;
@@ -39,7 +39,7 @@
       background: #ffffff;
       border-radius: 12px;
       padding: 3rem;
-      max-width: 1000px;
+      max-width: 1200px;
       margin: 3rem auto;
       box-shadow: 0 0 20px rgba(0,0,0,0.05);
     }
@@ -59,8 +59,20 @@
       box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
     }
 
-    h1 { font-size: 3rem; color: #0a4cff; }
-    p { font-size: 1.25rem; margin-bottom: 1rem; color: #333; }
+    h1 {
+      font-size: 3rem;
+      color: #0a4cff;
+    }
+
+    h2, h3 {
+      font-size: 0.75rem;
+      color: #0a4cff;
+      margin-bottom: 0.5rem;
+    }
+
+    p, li, a, button {
+      font-size: 0.625rem;
+    }
 
     .about {
       margin-bottom: 2rem;
@@ -76,7 +88,7 @@
 
     .projects {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      grid-template-columns: repeat(4, 1fr);
       gap: 1.5rem;
     }
 
@@ -96,18 +108,6 @@
       height: 160px;
       object-fit: cover;
       margin-bottom: 1rem;
-    }
-
-    .project-card h3 {
-      color: #0a4cff;
-      margin-bottom: 0.5rem;
-    }
-
-    .project-card ul {
-      margin: 0.5rem 0 1rem 1rem;
-      padding: 0;
-      list-style-type: disc;
-      color: #555;
     }
 
     .saiba-mais {
@@ -165,41 +165,39 @@
       <div class="project-card">
         <img src="img/saude.jpg" alt="Risco na Saúde" class="card-img" />
         <h3>Risco na Saúde</h3>
-        <p>Modelagem preditiva aplicada à área da saúde para antecipar riscos e prevenir eventos críticos.</p>
+        <p>Modelagem preditiva aplicada à saúde para antecipar riscos.</p>
         <ul>
-          <li>Python, Pandas, Scikit-learn</li>
+          <li>Python, Scikit-learn</li>
           <li>XGBoost, Random Forest</li>
-          <li>Dados clínicos e enriquecimento</li>
-          <li>AUC, Recall, Confusão</li>
-          <li>Pipelines de produção</li>
+          <li>Dados clínicos</li>
+          <li>AUC, Recall</li>
+          <li>Pipelines produtivos</li>
         </ul>
         <div class="saiba-mais"><a href="#">Saiba mais →</a></div>
       </div>
-
       <div class="project-card">
         <img src="img/credito.jpg" alt="Risco no Crédito" class="card-img" />
         <h3>Risco no Crédito</h3>
-        <p>Soluções para análise de inadimplência e score, com governança e estabilidade de modelo.</p>
+        <p>Análise de inadimplência e score com monitoramento.</p>
         <ul>
-          <li>PySpark, SQL, Databricks</li>
+          <li>PySpark, SQL</li>
           <li>Modelos binários</li>
           <li>PSI, KS, ROC</li>
-          <li>Unity Catalog e MLflow</li>
+          <li>MLflow, UC</li>
           <li>Deploy automatizado</li>
         </ul>
         <div class="saiba-mais"><a href="#">Saiba mais →</a></div>
       </div>
-
       <div class="project-card">
         <img src="img/fraude.jpg" alt="Fraude" class="card-img" />
         <h3>Fraude</h3>
-        <p>Detecção de comportamento anômalo para minimizar perdas e proteger o negócio.</p>
+        <p>Detecção de comportamento anômalo com ML não supervisionado.</p>
         <ul>
-          <li>Isolation Forest, DBSCAN</li>
-          <li>Clustering de comportamento</li>
-          <li>Alertas automatizados</li>
+          <li>Isolation Forest</li>
+          <li>DBSCAN</li>
+          <li>Clustering</li>
           <li>Power BI</li>
-          <li>Integração em tempo real</li>
+          <li>Alertas em tempo real</li>
         </ul>
         <div class="saiba-mais"><a href="#">Saiba mais →</a></div>
       </div>
@@ -238,19 +236,15 @@
 
     function draw() {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
-
       neurons.forEach((n, i) => {
         n.x += n.vx;
         n.y += n.vy;
-
         if (n.x < 0 || n.x > canvas.width) n.vx *= -1;
         if (n.y < 0 || n.y > canvas.height) n.vy *= -1;
-
         ctx.beginPath();
         ctx.arc(n.x, n.y, 4, 0, Math.PI * 2);
         ctx.fillStyle = "#0a4cff";
         ctx.fill();
-
         for (let j = i + 1; j < total; j++) {
           const n2 = neurons[j];
           const dx = n.x - n2.x;
@@ -264,7 +258,6 @@
             ctx.stroke();
           }
         }
-
         const dx = n.x - mouse.x;
         const dy = n.y - mouse.y;
         const distMouse = Math.sqrt(dx * dx + dy * dy);
@@ -276,10 +269,8 @@
           ctx.stroke();
         }
       });
-
       requestAnimationFrame(draw);
     }
-
     draw();
   </script>
 </body>
